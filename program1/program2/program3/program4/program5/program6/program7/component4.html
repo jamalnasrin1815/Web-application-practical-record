@@ -1,0 +1,68 @@
+jsx
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+
+function InputField({ type, placeholder, value, onChange }) {
+    return (
+        <input
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+        />
+    );
+}
+
+function LoginForm() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+
+    function handleLogin(e) {
+        e.preventDefault();
+
+        if (username === "" || password === "") {
+            setMessage("Please enter username and password");
+        } else {
+            setMessage("Welcome " + username);
+        }
+    }
+
+    return (
+        <div>
+            <h2>User Login</h2>
+
+            <form onSubmit={handleLogin}>
+                <InputField
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+
+                <br /><br />
+
+                <InputField
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+
+                <br /><br />
+
+                <button type="submit">Login</button>
+            </form>
+
+            <p>{message}</p>
+        </div>
+    );
+}
+
+function App() {
+    return <LoginForm />;
+}
+
+ReactDOM.createRoot(document.getElementById("root"))
+    .render(<App />);
+

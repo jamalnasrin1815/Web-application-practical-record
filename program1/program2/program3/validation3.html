@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Validation</title>
+</head>
+<body>
+
+<h2>Password Validation</h2>
+
+<input type="password" id="password"
+       placeholder="Enter Password">
+
+<button onclick="validatePassword()">Submit</button>
+
+<script>
+function validatePassword() {
+    let password = document.getElementById("password").value;
+
+    if (password.length >= 6) {
+        alert("Valid Password");
+    } else {
+        alert("Password must contain at least 6 characters");
+    }
+}
+</script>
+
+</body>
+</html>
+
